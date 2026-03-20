@@ -119,8 +119,6 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
 
   const tags = [
     categoryLabels[event.category as string] || event.category,
-    "Open to All",
-    "Free Entry",
   ];
 
   return (
@@ -323,12 +321,6 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
             </Link>
           </div>
 
-          {/* CTA Button */}
-          <div className="text-center">
-            <button className="bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-dim transition-colors w-full" style={{ fontFamily: 'var(--font-headline)' }}>
-              Secure Your Spot
-            </button>
-          </div>
         </div>
       </div>
     </div>

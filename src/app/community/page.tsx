@@ -6,7 +6,6 @@ import Link from "next/link";
 import {
   MessageSquare,
   Pin,
-  Plus,
   User,
   Loader2,
   Send,
@@ -38,42 +37,6 @@ interface Reply {
 
 const FILTERS = ["All", "Pinned", "Recent", "Most Replies"];
 
-const MOCK_POSTS: Post[] = [
-  {
-    id: "mock-1",
-    title: "Welcome to the Community Board!",
-    body: "This is a space for Dal students and societies to connect, share ideas, and collaborate. Feel free to start a conversation!",
-    isPinned: true,
-    createdAt: new Date().toISOString(),
-    authorName: "EventTree Team",
-    authorId: "system",
-    societyName: null,
-    replyCount: 3,
-  },
-  {
-    id: "mock-2",
-    title: "Looking for study group partners - CSCI 3120",
-    body: "Anyone interested in forming a study group for Operating Systems? We can meet at the Killam Library on weekends.",
-    isPinned: false,
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    authorName: "Alex Chen",
-    authorId: "mock-user-1",
-    societyName: "CS Society",
-    replyCount: 7,
-  },
-  {
-    id: "mock-3",
-    title: "Tips for first-year students",
-    body: "Hey everyone! As someone who just finished first year, here are some tips I wish I knew earlier...",
-    isPinned: false,
-    createdAt: new Date(Date.now() - 172800000).toISOString(),
-    authorName: "Jordan Smith",
-    authorId: "mock-user-2",
-    societyName: null,
-    replyCount: 12,
-  },
-];
-
 export default function CommunityPage() {
   const { data: session } = useSession();
   const [posts, setPosts] = useState<Post[]>([]);
@@ -82,7 +45,6 @@ export default function CommunityPage() {
     (Post & { replies: Reply[] }) | null
   >(null);
   const [activeFilter, setActiveFilter] = useState("All");
-  const [newPostOpen, setNewPostOpen] = useState(false);
   const [replyText, setReplyText] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [quickPostTitle, setQuickPostTitle] = useState("");
@@ -94,42 +56,15 @@ export default function CommunityPage() {
         const res = await fetch("/api/community");
         if (!res.ok) throw new Error("Failed to fetch");
         const data = await res.json();
-        setPosts(data.length > 0 ? data : MOCK_POSTS);
+        setPosts(data);
       } catch {
-        setPosts(MOCK_POSTS);
+        setPosts([]);
       } finally {
         setLoading(false);
       }
     }
     fetchPosts();
   }, []);
-
-  async function createPost(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubmitting(true);
-    const form = new FormData(e.currentTarget);
-    try {
-      const res = await fetch("/api/community", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: form.get("title"),
-          body: form.get("body"),
-        }),
-      });
-      if (res.ok) {
-        toast.success("Post created!");
-        setNewPostOpen(false);
-        const data = await fetch("/api/community").then((r) => r.json());
-        setPosts(data);
-      } else {
-        toast.error("Failed to create post");
-      }
-    } catch {
-      toast.error("Failed to create post");
-    }
-    setSubmitting(false);
-  }
 
   async function handleQuickPost() {
     if (!quickPostTitle.trim() || !quickPostBody.trim()) return;
@@ -223,24 +158,16 @@ export default function CommunityPage() {
             Community
           </span>
           <h1
-            className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4"
+            className="text-4xl md:text-6xl font-extrabold text-on-surface leading-tight mb-4"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             Community Board
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mb-6">
+          <p className="text-on-surface-variant text-lg max-w-2xl mb-6">
             Connect with fellow Dal students and societies. Share ideas, ask
             questions, and build your campus community.
           </p>
           <div className="flex flex-wrap gap-3">
-            {session && (
-              <button
-                onClick={() => setNewPostOpen(true)}
-                className="px-8 py-3 bg-primary text-white rounded-xl font-semibold shadow-black/5 hover:bg-primary-dim transition-colors inline-flex items-center gap-2"
-              >
-                <Plus className="h-4 w-4" /> New Post
-              </button>
-            )}
             <Link
               href="/community/collab-fridays"
               className="px-8 py-3 bg-violet-100 text-primary rounded-xl font-semibold hover:bg-violet-200 transition-all duration-300 inline-flex items-center gap-2"
@@ -251,69 +178,13 @@ export default function CommunityPage() {
         </div>
       </section>
 
-      {/* New Post Modal */}
-      {newPostOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-lg mx-4 shadow-lg shadow-black/5 border border-outline-variant/30">
-            <h2
-              className="text-xl font-extrabold text-gray-900 mb-4"
-              style={{ fontFamily: "var(--font-headline)" }}
-            >
-              Create a Post
-            </h2>
-            <form onSubmit={createPost} className="space-y-4">
-              <div>
-                <label className="block text-sm font-bold text-gray-500 mb-1">
-                  Title
-                </label>
-                <input
-                  name="title"
-                  required
-                  minLength={3}
-                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none"
-                  placeholder="What's on your mind?"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-gray-500 mb-1">
-                  Body
-                </label>
-                <textarea
-                  name="body"
-                  rows={4}
-                  required
-                  minLength={10}
-                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none resize-none"
-                  placeholder="Share your thoughts..."
-                />
-              </div>
-              <div className="flex gap-3 justify-end">
-                <button
-                  type="button"
-                  onClick={() => setNewPostOpen(false)}
-                  className="px-6 py-2 bg-gray-100 text-gray-600 rounded-xl font-semibold text-sm hover:bg-gray-200 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="px-6 py-2 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary-dim transition-colors"
-                >
-                  {submitting ? "Posting..." : "Post"}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {selectedPost ? (
         /* Single Post Detail View */
         <div>
           <button
             onClick={() => setSelectedPost(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-900 font-semibold text-sm mb-6 transition-colors"
+            className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface font-semibold text-sm mb-6 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" /> Back to posts
           </button>
@@ -326,26 +197,26 @@ export default function CommunityPage() {
                   Pinned
                 </span>
               )}
-              <span className="text-sm text-gray-500 flex items-center gap-1">
+              <span className="text-sm text-on-surface-variant flex items-center gap-1">
                 <User className="h-3 w-3" /> {selectedPost.authorName}
               </span>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-on-surface-variant/70">
                 {new Date(selectedPost.createdAt).toLocaleDateString()}
               </span>
             </div>
             <h2
-              className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4"
+              className="text-2xl md:text-3xl font-extrabold text-on-surface mb-4"
               style={{ fontFamily: "var(--font-headline)" }}
             >
               {selectedPost.title}
             </h2>
-            <p className="whitespace-pre-wrap text-gray-600 leading-relaxed mb-8">
+            <p className="whitespace-pre-wrap text-on-surface-variant leading-relaxed mb-8">
               {selectedPost.body}
             </p>
 
             <div className="border-t border-outline-variant/30 pt-6">
               <h4
-                className="font-extrabold text-gray-900 mb-4"
+                className="font-extrabold text-on-surface mb-4"
                 style={{ fontFamily: "var(--font-headline)" }}
               >
                 Replies ({selectedPost.replies?.length || 0})
@@ -357,14 +228,14 @@ export default function CommunityPage() {
                     className="bg-surface-container-low rounded-xl p-4 border border-outline-variant/30"
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-bold text-on-surface">
                         {reply.authorName}
                       </span>
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-on-surface-variant/70">
                         {new Date(reply.createdAt).toLocaleDateString()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-on-surface-variant">
                       {reply.body}
                     </p>
                   </div>
@@ -379,7 +250,7 @@ export default function CommunityPage() {
                     onKeyDown={(e) =>
                       e.key === "Enter" && !e.shiftKey && submitReply()
                     }
-                    className="flex-1 bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none"
+                    className="flex-1 bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none"
                   />
                   <button
                     onClick={submitReply}
@@ -407,7 +278,7 @@ export default function CommunityPage() {
                   className={
                     activeFilter === filter
                       ? "px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold transition-all duration-300"
-                      : "px-4 py-2 bg-gray-100 text-gray-500 rounded-full text-sm font-bold hover:bg-gray-200 transition-all duration-300"
+                      : "px-4 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-bold hover:bg-surface-container transition-all duration-300"
                   }
                 >
                   {filter}
@@ -422,14 +293,14 @@ export default function CommunityPage() {
                   placeholder="Post title..."
                   value={quickPostTitle}
                   onChange={(e) => setQuickPostTitle(e.target.value)}
-                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none mb-3 text-sm font-bold"
+                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none mb-3 text-sm font-bold"
                 />
                 <textarea
                   placeholder="What's on your mind?"
                   value={quickPostBody}
                   onChange={(e) => setQuickPostBody(e.target.value)}
                   rows={3}
-                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none resize-none mb-3"
+                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none resize-none mb-3"
                 />
                 <div className="flex justify-end">
                   <button
@@ -463,16 +334,16 @@ export default function CommunityPage() {
                             <Pin className="h-3.5 w-3.5 text-primary" />
                           )}
                           <h3
-                            className="font-extrabold text-gray-900"
+                            className="font-extrabold text-on-surface"
                             style={{ fontFamily: "var(--font-headline)" }}
                           >
                             {post.title}
                           </h3>
                         </div>
-                        <p className="text-sm text-gray-600 line-clamp-2">
+                        <p className="text-sm text-on-surface-variant line-clamp-2">
                           {post.body}
                         </p>
-                        <div className="flex items-center gap-3 mt-3 text-xs text-gray-500">
+                        <div className="flex items-center gap-3 mt-3 text-xs text-on-surface-variant">
                           <span className="flex items-center gap-1">
                             <User className="h-3 w-3" /> {post.authorName}
                           </span>
@@ -486,7 +357,7 @@ export default function CommunityPage() {
                           </span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 text-gray-500 ml-4">
+                      <div className="flex items-center gap-1 text-on-surface-variant ml-4">
                         <MessageSquare className="h-4 w-4" />
                         <span className="text-sm font-bold">
                           {post.replyCount}
@@ -498,14 +369,14 @@ export default function CommunityPage() {
               </div>
             ) : (
               <div className="bg-white p-12 rounded-2xl border border-outline-variant/30 text-center">
-                <MessageSquare className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+                <MessageSquare className="h-12 w-12 text-outline-variant mx-auto mb-4" />
                 <h3
-                  className="text-xl font-extrabold text-gray-900 mb-2"
+                  className="text-xl font-extrabold text-on-surface mb-2"
                   style={{ fontFamily: "var(--font-headline)" }}
                 >
                   No posts yet
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-on-surface-variant">
                   Be the first to start a conversation!
                 </p>
               </div>
@@ -518,13 +389,13 @@ export default function CommunityPage() {
             <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
               <div className="border-l-4 border-primary pl-4 mb-4">
                 <h3
-                  className="font-extrabold text-gray-900 flex items-center gap-2"
+                  className="font-extrabold text-on-surface flex items-center gap-2"
                   style={{ fontFamily: "var(--font-headline)" }}
                 >
                   <Sparkles className="h-5 w-5 text-primary" />
                   Collab Fridays
                 </h3>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-on-surface-variant mt-1">
                   Find collaboration partners for your next event.{" "}
                   <span className="text-primary font-semibold">
                     #CollabFridays
@@ -542,33 +413,33 @@ export default function CommunityPage() {
             {/* Community Stats */}
             <div className="bg-violet-50 p-6 rounded-2xl border border-outline-variant/30">
               <h3
-                className="font-extrabold text-gray-900 mb-4"
+                className="font-extrabold text-on-surface mb-4"
                 style={{ fontFamily: "var(--font-headline)" }}
               >
                 Community Stats
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 flex items-center gap-2">
+                  <span className="text-sm text-on-surface-variant flex items-center gap-2">
                     <MessageSquare className="h-4 w-4" /> Total Posts
                   </span>
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-on-surface">
                     {posts.length}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 flex items-center gap-2">
+                  <span className="text-sm text-on-surface-variant flex items-center gap-2">
                     <Users className="h-4 w-4" /> Active Members
                   </span>
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-on-surface">
                     {new Set(posts.map((p) => p.authorId)).size}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 flex items-center gap-2">
+                  <span className="text-sm text-on-surface-variant flex items-center gap-2">
                     <TrendingUp className="h-4 w-4" /> Total Replies
                   </span>
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-on-surface">
                     {posts.reduce((sum, p) => sum + p.replyCount, 0)}
                   </span>
                 </div>
@@ -578,12 +449,12 @@ export default function CommunityPage() {
             {/* Guidelines */}
             <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
               <h3
-                className="font-extrabold text-gray-900 mb-3"
+                className="font-extrabold text-on-surface mb-3"
                 style={{ fontFamily: "var(--font-headline)" }}
               >
                 Community Guidelines
               </h3>
-              <ul className="space-y-2 text-sm text-gray-500">
+              <ul className="space-y-2 text-sm text-on-surface-variant">
                 <li>Be respectful and inclusive</li>
                 <li>No spam or self-promotion</li>
                 <li>Keep discussions on-topic</li>

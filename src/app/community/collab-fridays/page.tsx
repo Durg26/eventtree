@@ -40,48 +40,6 @@ interface CollabResponse {
 
 const FILTERS = ["All", "Open", "Closed"];
 
-const MOCK_COLLABS: CollabRequest[] = [
-  {
-    id: "mock-collab-1",
-    title: "Partner for Cultural Night - Spring 2026",
-    description:
-      "We're organizing a cultural night and looking for societies interested in co-hosting. We need help with performances, food, and decorations. Let's make it a campus-wide celebration!",
-    eventType: "Cultural",
-    isOpen: true,
-    createdAt: new Date().toISOString(),
-    societyName: "International Students Association",
-    societyId: "mock-soc-1",
-    createdByName: "Maria Garcia",
-    responseCount: 4,
-  },
-  {
-    id: "mock-collab-2",
-    title: "Joint Workshop: Resume Building + Interview Skills",
-    description:
-      "Looking for a society to co-host a career prep workshop. We can cover the resume portion if you handle mock interviews.",
-    eventType: "Workshop",
-    isOpen: true,
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    societyName: "Business Society",
-    societyId: "mock-soc-2",
-    createdByName: "David Kim",
-    responseCount: 2,
-  },
-  {
-    id: "mock-collab-3",
-    title: "Hackathon Co-organizers Needed",
-    description:
-      "Planning a 24-hour hackathon for next month. Need help with sponsorships, mentors, and venue logistics.",
-    eventType: "Social",
-    isOpen: false,
-    createdAt: new Date(Date.now() - 259200000).toISOString(),
-    societyName: "CS Society",
-    societyId: "mock-soc-3",
-    createdByName: "Sarah Lee",
-    responseCount: 6,
-  },
-];
-
 export default function CollabFridaysPage() {
   const { data: session } = useSession();
   const user = session?.user as
@@ -104,9 +62,9 @@ export default function CollabFridaysPage() {
         const res = await fetch("/api/collab");
         if (!res.ok) throw new Error("Failed to fetch");
         const data = await res.json();
-        setCollabs(data.length > 0 ? data : MOCK_COLLABS);
+        setCollabs(data);
       } catch {
-        setCollabs(MOCK_COLLABS);
+        setCollabs([]);
       } finally {
         setLoading(false);
       }
@@ -203,13 +161,13 @@ export default function CollabFridaysPage() {
             Collab Fridays
           </span>
           <h1
-            className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4"
+            className="text-4xl md:text-6xl font-extrabold text-on-surface leading-tight mb-4"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             <Sparkles className="inline h-10 w-10 text-primary mr-3" />
             Collab Fridays
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mb-6">
+          <p className="text-on-surface-variant text-lg max-w-2xl mb-6">
             Find collaboration partners for your next event. Post a request or
             respond to one -- let&apos;s build something amazing together.{" "}
             <span className="text-primary font-semibold">#CollabFridays</span>
@@ -238,25 +196,25 @@ export default function CollabFridaysPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
           <div className="bg-white rounded-2xl p-6 w-full max-w-lg mx-4 shadow-lg shadow-black/5 border border-outline-variant/30">
             <h2
-              className="text-xl font-extrabold text-gray-900 mb-4"
+              className="text-xl font-extrabold text-on-surface mb-4"
               style={{ fontFamily: "var(--font-headline)" }}
             >
               Post a Collab Request
             </h2>
             <form onSubmit={createCollab} className="space-y-4">
               <div>
-                <label className="block text-sm font-bold text-gray-500 mb-1">
+                <label className="block text-sm font-bold text-on-surface-variant mb-1">
                   What are you looking for?
                 </label>
                 <input
                   name="title"
                   required
                   placeholder="e.g., Partner for cultural night"
-                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none"
+                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-500 mb-1">
+                <label className="block text-sm font-bold text-on-surface-variant mb-1">
                   Details
                 </label>
                 <textarea
@@ -265,24 +223,24 @@ export default function CollabFridaysPage() {
                   required
                   minLength={10}
                   placeholder="Describe the event and what kind of partner you're looking for..."
-                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none resize-none"
+                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none resize-none"
                 />
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-500 mb-1">
+                <label className="block text-sm font-bold text-on-surface-variant mb-1">
                   Event type (optional)
                 </label>
                 <input
                   name="eventType"
                   placeholder="e.g., Cultural, Social, Workshop"
-                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none"
+                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none"
                 />
               </div>
               <div className="flex gap-3 justify-end">
                 <button
                   type="button"
                   onClick={() => setNewCollabOpen(false)}
-                  className="px-6 py-2 bg-gray-100 text-gray-600 rounded-xl font-semibold text-sm hover:bg-gray-200 transition-colors"
+                  className="px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-xl font-semibold text-sm hover:bg-surface-container transition-colors"
                 >
                   Cancel
                 </button>
@@ -304,7 +262,7 @@ export default function CollabFridaysPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
           <div className="bg-white rounded-2xl p-6 w-full max-w-lg mx-4 shadow-lg shadow-black/5 border border-outline-variant/30">
             <h2
-              className="text-xl font-extrabold text-gray-900 mb-4"
+              className="text-xl font-extrabold text-on-surface mb-4"
               style={{ fontFamily: "var(--font-headline)" }}
             >
               Respond to Collab Request
@@ -314,7 +272,7 @@ export default function CollabFridaysPage() {
               value={responseMessage}
               onChange={(e) => setResponseMessage(e.target.value)}
               rows={4}
-              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none resize-none mb-4"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none resize-none mb-4"
             />
             <div className="flex gap-3 justify-end">
               <button
@@ -323,7 +281,7 @@ export default function CollabFridaysPage() {
                   setRespondOpen(false);
                   setResponseMessage("");
                 }}
-                className="px-6 py-2 bg-gray-100 text-gray-600 rounded-xl font-semibold text-sm hover:bg-gray-200 transition-colors"
+                className="px-6 py-2 bg-surface-container-low text-on-surface-variant rounded-xl font-semibold text-sm hover:bg-surface-container transition-colors"
               >
                 Cancel
               </button>
@@ -344,7 +302,7 @@ export default function CollabFridaysPage() {
         <div>
           <button
             onClick={() => setSelectedCollab(null)}
-            className="flex items-center gap-2 text-gray-500 hover:text-gray-900 font-semibold text-sm mb-6 transition-colors"
+            className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface font-semibold text-sm mb-6 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" /> Back to collabs
           </button>
@@ -355,7 +313,7 @@ export default function CollabFridaysPage() {
                 className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${
                   selectedCollab.isOpen
                     ? "bg-primary/10 text-primary"
-                    : "bg-gray-100 text-gray-500"
+                    : "bg-surface-container-low text-on-surface-variant"
                 }`}
               >
                 {selectedCollab.isOpen ? (
@@ -372,12 +330,12 @@ export default function CollabFridaysPage() {
               )}
             </div>
             <h2
-              className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3"
+              className="text-2xl md:text-3xl font-extrabold text-on-surface mb-3"
               style={{ fontFamily: "var(--font-headline)" }}
             >
               {selectedCollab.title}
             </h2>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-on-surface-variant mb-6">
               Posted by{" "}
               <span className="font-bold text-primary">
                 {selectedCollab.societyName}
@@ -385,13 +343,13 @@ export default function CollabFridaysPage() {
               &middot;{" "}
               {new Date(selectedCollab.createdAt).toLocaleDateString()}
             </p>
-            <p className="whitespace-pre-wrap text-gray-600 leading-relaxed mb-8">
+            <p className="whitespace-pre-wrap text-on-surface-variant leading-relaxed mb-8">
               {selectedCollab.description}
             </p>
 
             <div className="border-t border-outline-variant/30 pt-6">
               <h4
-                className="font-extrabold text-gray-900 mb-4"
+                className="font-extrabold text-on-surface mb-4"
                 style={{ fontFamily: "var(--font-headline)" }}
               >
                 Responses ({selectedCollab.responses?.length || 0})
@@ -406,11 +364,11 @@ export default function CollabFridaysPage() {
                       <span className="text-sm font-bold text-primary">
                         {resp.societyName}
                       </span>
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-on-surface-variant/70">
                         {new Date(resp.createdAt).toLocaleDateString()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-on-surface-variant">
                       {resp.message}
                     </p>
                   </div>
@@ -444,7 +402,7 @@ export default function CollabFridaysPage() {
                   className={
                     activeFilter === filter
                       ? "px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold transition-all duration-300"
-                      : "px-4 py-2 bg-gray-100 text-gray-500 rounded-full text-sm font-bold hover:bg-gray-200 transition-all duration-300"
+                      : "px-4 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-bold hover:bg-surface-container transition-all duration-300"
                   }
                 >
                   {filter}
@@ -468,7 +426,7 @@ export default function CollabFridaysPage() {
                             className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${
                               collab.isOpen
                                 ? "bg-primary/10 text-primary"
-                                : "bg-gray-100 text-gray-500"
+                                : "bg-surface-container-low text-on-surface-variant"
                             }`}
                           >
                             {collab.isOpen ? "Open" : "Closed"}
@@ -480,15 +438,15 @@ export default function CollabFridaysPage() {
                           )}
                         </div>
                         <h3
-                          className="font-extrabold text-gray-900 mt-1"
+                          className="font-extrabold text-on-surface mt-1"
                           style={{ fontFamily: "var(--font-headline)" }}
                         >
                           {collab.title}
                         </h3>
-                        <p className="text-sm text-gray-600 line-clamp-2 mt-1">
+                        <p className="text-sm text-on-surface-variant line-clamp-2 mt-1">
                           {collab.description}
                         </p>
-                        <p className="text-xs text-gray-500 mt-3">
+                        <p className="text-xs text-on-surface-variant mt-3">
                           by{" "}
                           <span className="font-bold text-primary">
                             {collab.societyName}
@@ -497,7 +455,7 @@ export default function CollabFridaysPage() {
                           {new Date(collab.createdAt).toLocaleDateString()}
                         </p>
                       </div>
-                      <div className="flex items-center gap-1 text-gray-500 ml-4">
+                      <div className="flex items-center gap-1 text-on-surface-variant ml-4">
                         <MessageSquare className="h-4 w-4" />
                         <span className="text-sm font-bold">
                           {collab.responseCount}
@@ -511,12 +469,12 @@ export default function CollabFridaysPage() {
               <div className="bg-white p-12 rounded-2xl border border-outline-variant/30 text-center">
                 <Sparkles className="h-12 w-12 text-gray-300 mx-auto mb-4" />
                 <h3
-                  className="text-xl font-extrabold text-gray-900 mb-2"
+                  className="text-xl font-extrabold text-on-surface mb-2"
                   style={{ fontFamily: "var(--font-headline)" }}
                 >
                   No collab requests yet
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-on-surface-variant">
                   Society organizers can post collaboration requests here.
                 </p>
               </div>
@@ -529,7 +487,7 @@ export default function CollabFridaysPage() {
             <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
               <div className="border-l-4 border-primary pl-4 mb-4">
                 <h3
-                  className="font-extrabold text-gray-900"
+                  className="font-extrabold text-on-surface"
                   style={{ fontFamily: "var(--font-headline)" }}
                 >
                   How It Works
@@ -541,10 +499,10 @@ export default function CollabFridaysPage() {
                     1
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900">
+                    <p className="text-sm font-bold text-on-surface">
                       Post a Request
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-on-surface-variant">
                       Describe the event you want to co-host
                     </p>
                   </div>
@@ -554,10 +512,10 @@ export default function CollabFridaysPage() {
                     2
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900">
+                    <p className="text-sm font-bold text-on-surface">
                       Get Responses
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-on-surface-variant">
                       Other societies express their interest
                     </p>
                   </div>
@@ -567,10 +525,10 @@ export default function CollabFridaysPage() {
                     3
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900">
+                    <p className="text-sm font-bold text-on-surface">
                       Collaborate
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-on-surface-variant">
                       Connect and plan your event together
                     </p>
                   </div>
@@ -581,33 +539,33 @@ export default function CollabFridaysPage() {
             {/* Collab Stats */}
             <div className="bg-violet-50 p-6 rounded-2xl border border-outline-variant/30">
               <h3
-                className="font-extrabold text-gray-900 mb-4"
+                className="font-extrabold text-on-surface mb-4"
                 style={{ fontFamily: "var(--font-headline)" }}
               >
                 Collab Stats
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 flex items-center gap-2">
+                  <span className="text-sm text-on-surface-variant flex items-center gap-2">
                     <Calendar className="h-4 w-4" /> Total Requests
                   </span>
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-on-surface">
                     {collabs.length}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 flex items-center gap-2">
+                  <span className="text-sm text-on-surface-variant flex items-center gap-2">
                     <CheckCircle className="h-4 w-4" /> Open Requests
                   </span>
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-on-surface">
                     {collabs.filter((c) => c.isOpen).length}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 flex items-center gap-2">
+                  <span className="text-sm text-on-surface-variant flex items-center gap-2">
                     <Users className="h-4 w-4" /> Total Responses
                   </span>
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-on-surface">
                     {collabs.reduce((sum, c) => sum + c.responseCount, 0)}
                   </span>
                 </div>
@@ -618,12 +576,12 @@ export default function CollabFridaysPage() {
             <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
               <div className="border-l-4 border-primary pl-4">
                 <h3
-                  className="font-extrabold text-gray-900 mb-2"
+                  className="font-extrabold text-on-surface mb-2"
                   style={{ fontFamily: "var(--font-headline)" }}
                 >
                   Community Board
                 </h3>
-                <p className="text-sm text-gray-500 mb-3">
+                <p className="text-sm text-on-surface-variant mb-3">
                   Join the wider conversation with fellow students.
                 </p>
                 <Link

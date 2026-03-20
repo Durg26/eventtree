@@ -19,8 +19,8 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/community", label: "Societies" },
     { href: "/events", label: "Events" },
+    { href: "/community", label: "Community" },
   ];
 
   return (

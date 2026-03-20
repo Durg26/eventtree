@@ -48,7 +48,7 @@ export default function RootLayout({
                 <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1">Navigate</span>
                 <Link href="/" className="text-on-surface-variant hover:text-primary transition-colors text-sm">Home</Link>
                 <Link href="/events" className="text-on-surface-variant hover:text-primary transition-colors text-sm">Events</Link>
-                <Link href="/community" className="text-on-surface-variant hover:text-primary transition-colors text-sm">Societies</Link>
+                <Link href="/community" className="text-on-surface-variant hover:text-primary transition-colors text-sm">Community</Link>
               </div>
               <div className="flex flex-col gap-2">
                 <span className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1">More</span>

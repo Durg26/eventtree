@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, CalendarDays, Users, Building2, Database } from "lucide-react";
+import { LayoutDashboard, CalendarDays, Users, Building2, Database, Plus } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -10,6 +10,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const links = [
     { href: "/admin", label: "Overview", icon: LayoutDashboard },
     { href: "/admin/events", label: "Events", icon: CalendarDays },
+    { href: "/admin/events/new", label: "Create Event", icon: Plus },
     { href: "/admin/users", label: "Users", icon: Users },
     { href: "/admin/societies", label: "Societies", icon: Building2 },
     { href: "/admin/database", label: "Database", icon: Database },
@@ -17,7 +18,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   function isActive(href: string) {
     if (href === "/admin") return pathname === "/admin";
-    return pathname.startsWith(href);
+    if (href === "/admin/events") return pathname === "/admin/events";
+    return pathname === href || pathname.startsWith(href + "/");
   }
 
   return (

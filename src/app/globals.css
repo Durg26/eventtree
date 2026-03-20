@@ -7,124 +7,139 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-}
+  --font-heading: var(--font-headline);
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+  /* EventTree Design System — Cool indigo/lavender palette */
+  --color-primary: #5B5BD6;
+  --color-primary-dim: #4C4CBF;
+  --color-primary-container: #E8E8FF;
+  --color-primary-fixed: #E8E8FF;
+  --color-primary-fixed-dim: #C5C5FF;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #3A3A9F;
+  --color-on-primary-fixed: #2A2A7F;
+  --color-on-primary-fixed-variant: #4848B0;
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --color-secondary: #6B7280;
+  --color-secondary-dim: #5B6370;
+  --color-secondary-container: #F3F4F6;
+  --color-secondary-fixed: #F3F4F6;
+  --color-secondary-fixed-dim: #E5E7EB;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #4B5563;
+  --color-on-secondary-fixed: #374151;
+  --color-on-secondary-fixed-variant: #6B7280;
+
+  --color-tertiary: #7C3AED;
+  --color-tertiary-dim: #6D28D9;
+  --color-tertiary-container: #EDE9FE;
+  --color-tertiary-fixed: #EDE9FE;
+  --color-tertiary-fixed-dim: #DDD6FE;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #5B21B6;
+  --color-on-tertiary-fixed: #4C1D95;
+  --color-on-tertiary-fixed-variant: #6D28D9;
+
+  --color-error: #DC2626;
+  --color-error-dim: #B91C1C;
+  --color-error-container: #FEE2E2;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #991B1B;
+
+  --color-surface: #FAFAFA;
+  --color-surface-dim: #E5E5E5;
+  --color-surface-bright: #FFFFFF;
+  --color-surface-tint: #5B5BD6;
+  --color-surface-variant: #F1F1F4;
+  --color-surface-container: #F4F4F5;
+  --color-surface-container-low: #F9F9FA;
+  --color-surface-container-high: #ECECEF;
+  --color-surface-container-highest: #E4E4E7;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-on-surface: #18181B;
+  --color-on-surface-variant: #71717A;
+
+  --color-outline: #A1A1AA;
+  --color-outline-variant: #D4D4D8;
+  --color-inverse-surface: #18181B;
+  --color-inverse-on-surface: #FAFAFA;
+  --color-inverse-primary: #A5A5FF;
+  --color-on-background: #18181B;
+
+  /* shadcn compat mappings */
+  --color-card: var(--color-surface-container-lowest);
+  --color-card-foreground: var(--color-on-surface);
+  --color-popover: var(--color-surface-container-lowest);
+  --color-popover-foreground: var(--color-on-surface);
+  --color-primary-foreground: var(--color-on-primary);
+  --color-secondary-foreground: var(--color-on-secondary);
+  --color-muted: var(--color-surface-container);
+  --color-muted-foreground: var(--color-on-surface-variant);
+  --color-accent: var(--color-surface-container-low);
+  --color-accent-foreground: var(--color-on-surface);
+  --color-destructive: var(--color-error);
+  --color-border: var(--color-outline-variant);
+  --color-input: var(--color-surface-container-high);
+  --color-ring: var(--color-primary);
+
+  --color-sidebar-ring: var(--color-primary);
+  --color-sidebar-border: var(--color-outline-variant);
+  --color-sidebar-accent-foreground: var(--color-on-primary-container);
+  --color-sidebar-accent: var(--color-primary-container);
+  --color-sidebar-primary-foreground: var(--color-on-primary);
+  --color-sidebar-primary: var(--color-primary);
+  --color-sidebar-foreground: var(--color-on-surface);
+  --color-sidebar: var(--color-surface-container-low);
+
+  --color-chart-1: #5B5BD6;
+  --color-chart-2: #7C3AED;
+  --color-chart-3: #6B7280;
+  --color-chart-4: #E8E8FF;
+  --color-chart-5: #EDE9FE;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-4xl: 2.5rem;
+
+  /* Font families */
+  --font-headline: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+  --font-label: 'Be Vietnam Pro', sans-serif;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-surface text-on-surface font-sans antialiased;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+  }
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+}
+
+/* Smooth transitions globally */
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .gradient-mesh {
+    background: linear-gradient(135deg, #f5f3ff 0%, #fce7f3 25%, #f0f9ff 50%, #faf5ff 75%, #f5f3ff 100%);
+  }
+  .gradient-mesh-hero {
+    background: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 30%, #f5f3ff 60%, #dbeafe 100%);
   }
 }

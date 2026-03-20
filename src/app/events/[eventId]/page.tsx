@@ -128,21 +128,21 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
       {/* Back Navigation */}
       <Link
         href="/events"
-        className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors mb-8 group"
+        className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-all duration-300 mb-8 group"
       >
-        <span className="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+        <span className="w-10 h-10 rounded-full bg-surface-container-low border border-outline-variant/30 flex items-center justify-center group-hover:border-primary/20 transition-all duration-300">
           <ArrowLeft className="h-4 w-4" />
         </span>
         <span className="text-sm font-semibold tracking-wide">Back to events</span>
       </Link>
 
       {/* Hero Image */}
-      <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-amber-900/10 mb-12">
+      <div className="relative rounded-2xl overflow-hidden shadow-sm mb-12">
         <div className="aspect-[21/9]">
           {event.imageUrl ? (
             <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover" />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-primary-container/40 via-primary/20 to-tertiary/10 flex items-center justify-center">
+            <div className="w-full h-full bg-gradient-to-br from-violet-50 via-primary/10 to-violet-100 flex items-center justify-center">
               <CalendarDays className="h-24 w-24 text-primary/15" />
             </div>
           )}
@@ -152,7 +152,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
         {/* Overlay Content */}
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-tertiary-container text-on-tertiary-container text-xs font-bold tracking-wider rounded-full uppercase px-3 py-1">
+            <span className="bg-violet-100 text-primary text-xs font-bold tracking-wider rounded-full uppercase px-3 py-1">
               {categoryLabels[event.category as string] || event.category}
             </span>
             <span className="bg-white/90 backdrop-blur text-stone-900 text-xs font-bold tracking-wider rounded-full px-3 py-1">
@@ -165,7 +165,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
           >
             {event.title}
           </h1>
-          <p className="text-amber-400 font-bold uppercase tracking-widest text-sm" style={{ fontFamily: 'var(--font-headline)' }}>
+          <p className="text-violet-300 font-bold uppercase tracking-widest text-sm" style={{ fontFamily: 'var(--font-headline)' }}>
             {event.societyName}
           </p>
         </div>
@@ -212,7 +212,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="px-4 py-2 bg-white text-stone-700 rounded-full text-xs font-semibold shadow-sm"
+                className="px-4 py-2 bg-white border border-outline-variant/30 text-on-surface-variant rounded-full text-xs font-semibold"
               >
                 {tag}
               </span>
@@ -223,7 +223,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
         {/* Sidebar */}
         <div className="lg:col-span-4 space-y-8">
           {/* RSVP Card */}
-          <div className="bg-surface-container-lowest rounded-xl p-8 shadow-sm shadow-amber-900/5">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
             <h3
               className="text-2xl font-bold text-on-surface mb-2"
               style={{ fontFamily: 'var(--font-headline)' }}
@@ -242,7 +242,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
           </div>
 
           {/* Event Details Card */}
-          <div className="bg-surface-container-lowest rounded-xl p-8 shadow-sm shadow-amber-900/5">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
             <h3
               className="text-2xl font-bold text-on-surface mb-2"
               style={{ fontFamily: 'var(--font-headline)' }}
@@ -254,7 +254,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
             <div className="space-y-6">
               {/* Date */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <CalendarDays className="h-5 w-5 text-primary" />
                 </div>
                 <div>
@@ -267,7 +267,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
 
               {/* Time */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Clock className="h-5 w-5 text-primary" />
                 </div>
                 <div>
@@ -280,7 +280,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
 
               {/* Location */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
@@ -294,7 +294,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
           </div>
 
           {/* Society Card */}
-          <div className="bg-surface-container-lowest rounded-xl p-8 shadow-sm shadow-amber-900/5">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
             <h3
               className="text-2xl font-bold text-on-surface mb-2"
               style={{ fontFamily: 'var(--font-headline)' }}
@@ -304,13 +304,13 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
             <div className="w-8 h-1 bg-primary rounded-full mb-6" />
             <Link href={`/societies/${event.societyId}`} className="group block">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <span className="text-primary font-bold text-lg" style={{ fontFamily: 'var(--font-headline)' }}>
                     {event.societyName.charAt(0)}
                   </span>
                 </div>
                 <div>
-                  <p className="font-bold text-on-surface group-hover:text-primary transition-colors" style={{ fontFamily: 'var(--font-headline)' }}>
+                  <p className="font-bold text-on-surface group-hover:text-primary transition-all duration-300" style={{ fontFamily: 'var(--font-headline)' }}>
                     {event.societyName}
                   </p>
                   {event.societyDescription && (
@@ -325,7 +325,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
 
           {/* CTA Button */}
           <div className="text-center">
-            <button className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform w-full" style={{ fontFamily: 'var(--font-headline)' }}>
+            <button className="bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-dim transition-colors w-full" style={{ fontFamily: 'var(--font-headline)' }}>
               Secure Your Spot
             </button>
           </div>

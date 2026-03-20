@@ -71,7 +71,7 @@ export default function SocietyProfileEditor() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-secondary" />
+        <Loader2 className="h-8 w-8 animate-spin text-on-surface-variant" />
       </div>
     );
   }
@@ -79,22 +79,22 @@ export default function SocietyProfileEditor() {
   return (
     <div className="max-w-2xl">
       <h1
-        className="text-4xl font-extrabold text-on-background tracking-tight mb-2"
+        className="text-4xl font-extrabold text-on-surface tracking-tight mb-2"
         style={{ fontFamily: "var(--font-headline)" }}
       >
         Society Profile
       </h1>
-      <p className="text-secondary mt-2 text-lg mb-8">
+      <p className="text-on-surface-variant mt-2 text-lg mb-8">
         Manage how your society appears to students.
       </p>
 
-      <div className="bg-surface-container-low p-8 rounded-2xl">
+      <div className="bg-white rounded-2xl border border-outline-variant/30 p-8">
         <form onSubmit={onSubmit} className="space-y-6">
           {/* Society Name */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="name"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Society Name
             </label>
@@ -103,15 +103,15 @@ export default function SocietyProfileEditor() {
               name="name"
               defaultValue={society.name}
               required
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
           {/* Slug */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="slug"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Slug
             </label>
@@ -120,15 +120,15 @@ export default function SocietyProfileEditor() {
               name="slug"
               defaultValue={society.slug}
               required
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
           {/* Description */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="description"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Description
             </label>
@@ -137,15 +137,15 @@ export default function SocietyProfileEditor() {
               name="description"
               rows={4}
               defaultValue={society.description}
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none resize-y"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface resize-y"
             />
           </div>
 
           {/* Logo URL */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="logoUrl"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Logo URL
             </label>
@@ -153,15 +153,15 @@ export default function SocietyProfileEditor() {
               id="logoUrl"
               name="logoUrl"
               defaultValue={society.logoUrl}
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
           {/* Banner URL */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="bannerUrl"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Banner URL
             </label>
@@ -169,15 +169,15 @@ export default function SocietyProfileEditor() {
               id="bannerUrl"
               name="bannerUrl"
               defaultValue={society.bannerUrl}
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
           {/* Contact Email */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="contactEmail"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Contact Email
             </label>
@@ -186,15 +186,15 @@ export default function SocietyProfileEditor() {
               name="contactEmail"
               type="email"
               defaultValue={society.contactEmail}
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
           {/* Website */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="website"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Website
             </label>
@@ -202,7 +202,7 @@ export default function SocietyProfileEditor() {
               id="website"
               name="website"
               defaultValue={society.website}
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
@@ -210,7 +210,7 @@ export default function SocietyProfileEditor() {
           <button
             type="submit"
             disabled={saving}
-            className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:hover:scale-100"
+            className="bg-primary text-white rounded-xl font-semibold hover:bg-primary-dim transition-colors px-8 py-3.5 disabled:opacity-50"
           >
             {saving ? "Saving..." : "Save Changes"}
           </button>

@@ -86,7 +86,7 @@ export default function EditEventPage() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-secondary" />
+        <Loader2 className="h-8 w-8 animate-spin text-on-surface-variant" />
       </div>
     );
   }
@@ -99,20 +99,20 @@ export default function EditEventPage() {
   return (
     <div className="max-w-2xl">
       <h1
-        className="text-4xl font-extrabold text-on-background tracking-tight mb-2"
+        className="text-4xl font-extrabold text-on-surface tracking-tight mb-2"
         style={{ fontFamily: "var(--font-headline)" }}
       >
         Edit Event
       </h1>
-      <p className="text-secondary mt-2 text-lg mb-8">Update your event details below.</p>
+      <p className="text-on-surface-variant mt-2 text-lg mb-8">Update your event details below.</p>
 
-      <div className="bg-surface-container-low p-8 rounded-2xl">
+      <div className="bg-white rounded-2xl border border-outline-variant/30 p-8">
         <form onSubmit={onSubmit} className="space-y-6">
           {/* Title */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="title"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Event Title
             </label>
@@ -121,15 +121,15 @@ export default function EditEventPage() {
               name="title"
               defaultValue={event.title as string}
               required
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
           {/* Description */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="description"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Description
             </label>
@@ -139,16 +139,16 @@ export default function EditEventPage() {
               rows={5}
               defaultValue={event.description as string}
               required
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none resize-y"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface resize-y"
             />
           </div>
 
           {/* Dates */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
+            <div>
               <label
                 htmlFor="date"
-                className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+                className="text-sm font-medium text-on-surface mb-1.5 block"
               >
                 Start Date & Time
               </label>
@@ -158,13 +158,13 @@ export default function EditEventPage() {
                 type="datetime-local"
                 defaultValue={dateValue}
                 required
-                className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
               />
             </div>
-            <div className="space-y-2">
+            <div>
               <label
                 htmlFor="endDate"
-                className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+                className="text-sm font-medium text-on-surface mb-1.5 block"
               >
                 End Date & Time
               </label>
@@ -173,16 +173,16 @@ export default function EditEventPage() {
                 name="endDate"
                 type="datetime-local"
                 defaultValue={endDateValue}
-                className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
               />
             </div>
           </div>
 
           {/* Location */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="location"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Location
             </label>
@@ -191,13 +191,13 @@ export default function EditEventPage() {
               name="location"
               defaultValue={event.location as string}
               required
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
           {/* Category */}
-          <div className="space-y-2">
-            <label className="text-xs font-bold tracking-[0.05em] uppercase text-outline">
+          <div>
+            <label className="text-sm font-medium text-on-surface mb-1.5 block">
               Category
             </label>
             <div className="flex flex-wrap gap-2">
@@ -206,10 +206,10 @@ export default function EditEventPage() {
                   key={cat.value}
                   type="button"
                   onClick={() => setCategory(cat.value)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-colors ${
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors ${
                     category === cat.value
-                      ? "bg-primary-container text-on-primary-container"
-                      : "bg-surface-container-high text-secondary hover:bg-surface-container-highest"
+                      ? "bg-primary text-white"
+                      : "bg-surface-container-low border border-outline-variant/30 text-on-surface hover:border-primary/30"
                   }`}
                 >
                   {cat.label}
@@ -219,10 +219,10 @@ export default function EditEventPage() {
           </div>
 
           {/* Image URL */}
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="imageUrl"
-              className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+              className="text-sm font-medium text-on-surface mb-1.5 block"
             >
               Image URL
             </label>
@@ -230,7 +230,7 @@ export default function EditEventPage() {
               id="imageUrl"
               name="imageUrl"
               defaultValue={event.imageUrl as string}
-              className="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm text-on-surface"
             />
           </div>
 
@@ -240,7 +240,7 @@ export default function EditEventPage() {
               type="submit"
               data-action="publish"
               disabled={saving}
-              className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:hover:scale-100"
+              className="bg-primary text-white rounded-xl font-semibold hover:bg-primary-dim transition-colors px-8 py-3.5 disabled:opacity-50"
             >
               {saving ? "Saving..." : "Publish"}
             </button>
@@ -248,14 +248,14 @@ export default function EditEventPage() {
               type="submit"
               data-action="draft"
               disabled={saving}
-              className="bg-surface-container-high text-secondary px-8 py-4 rounded-full font-bold hover:bg-surface-container-highest transition-colors disabled:opacity-50"
+              className="bg-surface-container-low border border-outline-variant/30 text-on-surface rounded-xl font-semibold hover:border-primary/30 transition-colors px-8 py-3.5 disabled:opacity-50"
             >
               Save as Draft
             </button>
             <button
               type="button"
               onClick={() => router.back()}
-              className="text-secondary px-8 py-4 rounded-full font-bold hover:bg-surface-container-high transition-colors"
+              className="text-on-surface-variant hover:text-on-surface px-8 py-3.5 rounded-xl font-semibold hover:bg-surface-container-high transition-colors"
             >
               Cancel
             </button>

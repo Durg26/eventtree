@@ -85,16 +85,16 @@ export default async function OrganizerDashboard() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
         <div>
           <h1
-            className="text-4xl font-extrabold text-on-background tracking-tight"
+            className="text-4xl font-extrabold text-on-surface tracking-tight"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             Dashboard
           </h1>
-          <p className="text-secondary mt-2 text-lg">{society?.name || "Your Society"}</p>
+          <p className="text-on-surface-variant mt-2 text-lg">{society?.name || "Your Society"}</p>
         </div>
         <Link
           href="/organizer/events/new"
-          className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform inline-flex items-center gap-2 self-start sm:self-auto"
+          className="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-primary-dim transition-colors inline-flex items-center gap-2 self-start sm:self-auto"
         >
           <Plus className="h-5 w-5" />
           Create Event
@@ -103,74 +103,74 @@ export default async function OrganizerDashboard() {
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-        <div className="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-none">
+        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 hover:shadow-lg transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
-            <div className="p-3 bg-primary-container/20 text-primary rounded-lg">
+            <div className="p-3 bg-primary/10 text-primary rounded-lg">
               <CalendarDays className="h-5 w-5" />
             </div>
-            <span className="text-tertiary text-xs font-bold bg-tertiary-container px-2 py-1 rounded-full flex items-center gap-1">
+            <span className="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full flex items-center gap-1">
               <TrendingUp className="h-3 w-3" /> Active
             </span>
           </div>
           <p
-            className="text-3xl font-extrabold text-on-background"
+            className="text-3xl font-extrabold text-on-surface"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             {myEvents.length}
           </p>
-          <p className="text-secondary text-sm mt-1">Total Events</p>
+          <p className="text-on-surface-variant text-sm mt-1">Total Events</p>
         </div>
 
-        <div className="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-none">
+        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 hover:shadow-lg transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
-            <div className="p-3 bg-primary-container/20 text-primary rounded-lg">
+            <div className="p-3 bg-primary/10 text-primary rounded-lg">
               <Users className="h-5 w-5" />
             </div>
-            <span className="text-tertiary text-xs font-bold bg-tertiary-container px-2 py-1 rounded-full flex items-center gap-1">
+            <span className="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full flex items-center gap-1">
               <TrendingUp className="h-3 w-3" /> RSVPs
             </span>
           </div>
           <p
-            className="text-3xl font-extrabold text-on-background"
+            className="text-3xl font-extrabold text-on-surface"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             {totalRsvps}
           </p>
-          <p className="text-secondary text-sm mt-1">Total RSVPs</p>
+          <p className="text-on-surface-variant text-sm mt-1">Total RSVPs</p>
         </div>
 
-        <div className="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-none">
+        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 hover:shadow-lg transition-all duration-300">
           <div className="flex items-center justify-between mb-3">
-            <div className="p-3 bg-primary-container/20 text-primary rounded-lg">
+            <div className="p-3 bg-primary/10 text-primary rounded-lg">
               <Eye className="h-5 w-5" />
             </div>
-            <span className="text-tertiary text-xs font-bold bg-tertiary-container px-2 py-1 rounded-full flex items-center gap-1">
+            <span className="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full flex items-center gap-1">
               <TrendingUp className="h-3 w-3" /> Views
             </span>
           </div>
           <p
-            className="text-3xl font-extrabold text-on-background"
+            className="text-3xl font-extrabold text-on-surface"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             {totalViews}
           </p>
-          <p className="text-secondary text-sm mt-1">Total Views</p>
+          <p className="text-on-surface-variant text-sm mt-1">Total Views</p>
         </div>
       </div>
 
       {/* Tip Card */}
-      <div className="bg-tertiary-container/30 rounded-xl p-6 mb-10 flex items-start gap-4">
-        <div className="p-2 bg-tertiary-container rounded-lg text-tertiary shrink-0">
+      <div className="bg-violet-50 rounded-2xl border border-outline-variant/30 p-6 mb-10 flex items-start gap-4">
+        <div className="p-2 bg-primary/10 rounded-lg text-primary shrink-0">
           <Lightbulb className="h-5 w-5" />
         </div>
         <div>
           <p className="text-on-surface font-semibold text-sm">Pro tip</p>
-          <p className="text-secondary text-sm mt-1">
+          <p className="text-on-surface-variant text-sm mt-1">
             Events with images get 3x more views. Add a cover image to boost engagement!
           </p>
           <Link
             href="/organizer/events/new"
-            className="text-tertiary font-bold text-sm mt-2 inline-block hover:underline"
+            className="text-primary font-bold text-sm mt-2 inline-block hover:underline"
           >
             Create an event with an image &rarr;
           </Link>
@@ -180,13 +180,13 @@ export default async function OrganizerDashboard() {
       {/* Events List */}
       <div className="mb-6 flex items-center justify-between">
         <h2
-          className="text-xs font-bold tracking-[0.05em] uppercase text-outline"
+          className="text-xs font-bold tracking-[0.05em] uppercase text-on-surface-variant"
           style={{ fontFamily: "var(--font-headline)" }}
         >
           Your Events
         </h2>
         <div className="flex gap-2">
-          <span className="bg-surface-container-high px-4 py-2 rounded-full text-secondary text-xs font-bold">
+          <span className="bg-primary/10 px-4 py-2 rounded-full text-primary text-xs font-bold">
             All
           </span>
         </div>
@@ -197,32 +197,32 @@ export default async function OrganizerDashboard() {
           {myEvents.map((event) => (
             <div
               key={event.id}
-              className="bg-surface-container-lowest p-4 rounded-xl flex flex-col lg:flex-row gap-6 items-center hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl border border-outline-variant/30 p-4 flex flex-col lg:flex-row gap-6 items-center hover:shadow-lg transition-all duration-300"
             >
               {/* Thumbnail placeholder */}
-              <div className="w-full lg:w-48 h-32 rounded-lg overflow-hidden bg-primary-container flex items-center justify-center shrink-0">
-                <CalendarDays className="h-8 w-8 text-on-primary-container/40" />
+              <div className="w-full lg:w-48 h-32 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center shrink-0">
+                <CalendarDays className="h-8 w-8 text-primary/40" />
               </div>
 
               {/* Event info */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[10px] font-bold tracking-widest text-tertiary uppercase bg-tertiary-container/30 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-bold tracking-widest text-primary uppercase bg-primary/10 px-2 py-0.5 rounded">
                     {event.category}
                   </span>
                   {!event.isPublished && (
-                    <span className="text-[10px] font-bold tracking-widest text-secondary uppercase bg-secondary-container/30 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase bg-surface-container-high px-2 py-0.5 rounded">
                       Draft
                     </span>
                   )}
                 </div>
                 <h3
-                  className="text-lg font-bold text-on-background truncate"
+                  className="text-lg font-bold text-on-surface truncate"
                   style={{ fontFamily: "var(--font-headline)" }}
                 >
                   {event.title}
                 </h3>
-                <p className="text-secondary text-sm mt-1">
+                <p className="text-on-surface-variant text-sm mt-1">
                   {new Date(event.date).toLocaleDateString("en-US", {
                     weekday: "short",
                     month: "short",
@@ -235,27 +235,27 @@ export default async function OrganizerDashboard() {
               {/* Stats */}
               <div className="flex items-center gap-6 shrink-0">
                 <div className="text-center">
-                  <p className="text-lg font-bold text-on-background">{event.viewCount}</p>
-                  <p className="text-secondary text-xs">Views</p>
+                  <p className="text-lg font-bold text-on-surface">{event.viewCount}</p>
+                  <p className="text-on-surface-variant text-xs">Views</p>
                 </div>
-                <div className="border-l border-outline-variant/10 h-8" />
+                <div className="border-l border-outline-variant/30 h-8" />
                 <div className="text-center">
-                  <p className="text-lg font-bold text-on-background">{Number(event.rsvpCount)}</p>
-                  <p className="text-secondary text-xs">Going</p>
+                  <p className="text-lg font-bold text-on-surface">{Number(event.rsvpCount)}</p>
+                  <p className="text-on-surface-variant text-xs">Going</p>
                 </div>
-                <div className="border-l border-outline-variant/10 h-8" />
+                <div className="border-l border-outline-variant/30 h-8" />
                 <div className="text-center">
-                  <p className="text-lg font-bold text-on-background">
+                  <p className="text-lg font-bold text-on-surface">
                     {Number(event.interestedCount)}
                   </p>
-                  <p className="text-secondary text-xs">Interested</p>
+                  <p className="text-on-surface-variant text-xs">Interested</p>
                 </div>
               </div>
 
               {/* Edit button */}
               <Link
                 href={`/organizer/events/${event.id}/edit`}
-                className="p-3 rounded-xl text-secondary hover:bg-surface-container-high transition-colors shrink-0"
+                className="p-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors shrink-0"
               >
                 <Edit className="h-5 w-5" />
               </Link>
@@ -263,20 +263,20 @@ export default async function OrganizerDashboard() {
           ))}
         </div>
       ) : (
-        <div className="bg-surface-container-lowest rounded-xl p-16 text-center">
-          <div className="p-4 bg-primary-container/20 text-primary rounded-full inline-flex mb-4">
+        <div className="bg-white rounded-2xl border border-outline-variant/30 p-16 text-center">
+          <div className="p-4 bg-primary/10 text-primary rounded-full inline-flex mb-4">
             <CalendarDays className="h-8 w-8" />
           </div>
           <h3
-            className="text-xl font-bold text-on-background mb-2"
+            className="text-xl font-bold text-on-surface mb-2"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             No events yet
           </h3>
-          <p className="text-secondary mb-6">Create your first event to get started!</p>
+          <p className="text-on-surface-variant mb-6">Create your first event to get started!</p>
           <Link
             href="/organizer/events/new"
-            className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform inline-flex items-center gap-2"
+            className="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-primary-dim transition-colors inline-flex items-center gap-2"
           >
             <Plus className="h-5 w-5" />
             Create Event

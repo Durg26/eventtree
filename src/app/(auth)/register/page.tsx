@@ -4,7 +4,6 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { TreesIcon } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -54,34 +53,29 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface pt-24">
-      <div className="bg-surface-container-lowest rounded-[2rem] p-8 md:p-12 shadow-2xl shadow-amber-900/10 max-w-md mx-auto w-full">
+    <div className="min-h-screen flex items-center justify-center gradient-mesh pt-24 px-4">
+      <div className="bg-white rounded-2xl p-8 md:p-10 shadow-xl shadow-black/5 border border-outline-variant/20 max-w-md mx-auto w-full">
         <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="bg-primary/10 p-3 rounded-2xl">
-              <TreesIcon className="h-8 w-8 text-primary" />
-            </div>
-          </div>
           <h1
-            className="text-3xl font-extrabold text-on-surface mb-2"
+            className="text-2xl font-bold text-on-surface mb-2"
             style={{ fontFamily: "var(--font-headline)" }}
           >
             Join EventTree
           </h1>
-          <p className="text-on-surface-variant">
-            Create your account and start <span className="text-primary font-bold">discovering</span>
+          <p className="text-on-surface-variant text-sm">
+            Create your account and start <span className="text-primary font-semibold">discovering</span>
           </p>
         </div>
 
-        <form onSubmit={onSubmit} className="space-y-5">
+        <form onSubmit={onSubmit} className="space-y-4">
           {error && (
-            <div className="text-sm text-error bg-error/10 px-4 py-3 rounded-xl font-semibold">
+            <div className="text-sm text-error bg-error/10 px-4 py-3 rounded-xl font-medium">
               {error}
             </div>
           )}
 
           <div>
-            <label htmlFor="name" className="text-sm font-bold text-on-surface-variant mb-2 block">
+            <label htmlFor="name" className="text-sm font-medium text-on-surface mb-1.5 block">
               Name
             </label>
             <input
@@ -89,12 +83,12 @@ export default function RegisterPage() {
               name="name"
               placeholder="Your name"
               required
-              className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none placeholder:text-on-surface-variant/50"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-all text-sm"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="text-sm font-bold text-on-surface-variant mb-2 block">
+            <label htmlFor="email" className="text-sm font-medium text-on-surface mb-1.5 block">
               Email
             </label>
             <input
@@ -103,12 +97,12 @@ export default function RegisterPage() {
               type="email"
               placeholder="you@dal.ca"
               required
-              className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none placeholder:text-on-surface-variant/50"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-all text-sm"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="text-sm font-bold text-on-surface-variant mb-2 block">
+            <label htmlFor="password" className="text-sm font-medium text-on-surface mb-1.5 block">
               Password
             </label>
             <input
@@ -117,20 +111,20 @@ export default function RegisterPage() {
               type="password"
               minLength={6}
               required
-              className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm transition-all"
             />
           </div>
 
           <div>
-            <label className="text-sm font-bold text-on-surface-variant mb-2 block">I am a...</label>
+            <label className="text-sm font-medium text-on-surface mb-1.5 block">I am a...</label>
             <div className="flex gap-3">
               <button
                 type="button"
                 onClick={() => setRole("student")}
-                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-colors ${
+                className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all ${
                   role === "student"
-                    ? "bg-primary text-on-primary shadow-lg shadow-primary/20"
-                    : "bg-surface-container-high text-on-surface-variant hover:bg-surface-container"
+                    ? "bg-primary text-white shadow-sm"
+                    : "bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/30"
                 }`}
               >
                 Student
@@ -138,10 +132,10 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setRole("organizer")}
-                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-colors ${
+                className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all ${
                   role === "organizer"
-                    ? "bg-primary text-on-primary shadow-lg shadow-primary/20"
-                    : "bg-surface-container-high text-on-surface-variant hover:bg-surface-container"
+                    ? "bg-primary text-white shadow-sm"
+                    : "bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/30"
                 }`}
               >
                 Society Organizer
@@ -152,14 +146,14 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-on-primary py-4 rounded-full font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform disabled:opacity-50"
+            className="w-full bg-primary text-white py-3 rounded-xl font-semibold shadow-sm hover:bg-primary-dim transition-colors disabled:opacity-50 text-sm"
           >
             {loading ? "Creating account..." : "Create Account"}
           </button>
 
-          <p className="text-sm text-on-surface-variant text-center">
+          <p className="text-sm text-on-surface-variant text-center pt-2">
             Already have an account?{" "}
-            <Link href="/login" className="text-primary hover:underline font-bold">
+            <Link href="/login" className="text-primary hover:underline font-semibold">
               Sign in
             </Link>
           </p>

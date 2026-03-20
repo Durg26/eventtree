@@ -60,9 +60,9 @@ export default function AdminDatabasePage() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar - Tables */}
         <div className="lg:col-span-1">
-          <div className="bg-surface-container-lowest rounded-xl shadow-sm p-4">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-4">
             <h3
-              className="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-3 px-2"
+              className="text-sm font-medium text-on-surface-variant uppercase tracking-wider mb-3 px-2"
             >
               Tables
             </h3>
@@ -70,7 +70,7 @@ export default function AdminDatabasePage() {
               {tables.map((table) => (
                 <button
                   key={table}
-                  className="w-full text-left text-sm font-mono text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-xl px-3 py-2.5 transition-colors"
+                  className="w-full text-left text-sm font-mono text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-xl px-3 py-2.5 transition-colors"
                   onClick={() => loadTable(table)}
                 >
                   {table}
@@ -82,7 +82,7 @@ export default function AdminDatabasePage() {
 
         {/* Main - Query + Results */}
         <div className="lg:col-span-3 space-y-4">
-          <div className="bg-surface-container-lowest rounded-xl shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-6">
             <div className="flex items-center gap-2 text-sm text-primary mb-4">
               <AlertTriangle className="h-4 w-4" />
               <span className="font-semibold">Only SELECT queries are allowed for safety</span>
@@ -90,20 +90,20 @@ export default function AdminDatabasePage() {
             <textarea
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none font-mono text-sm min-h-[100px] resize-y"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none font-mono text-sm min-h-[100px] resize-y transition-colors"
               placeholder="SELECT * FROM ..."
             />
             <div className="flex items-center gap-3 mt-4">
               <button
                 onClick={runQuery}
                 disabled={loading || !query.trim()}
-                className="bg-primary text-on-primary rounded-full font-bold px-6 py-2 flex items-center gap-2 hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20 disabled:opacity-50"
+                className="bg-primary text-white rounded-xl font-semibold px-6 py-2.5 flex items-center gap-2 hover:bg-primary-dim transition-colors disabled:opacity-50"
               >
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
                 Run Query
               </button>
               {results && (
-                <span className="bg-surface-container-low text-on-surface-variant text-sm font-bold px-4 py-2 rounded-full">
+                <span className="bg-surface-container-low text-on-surface-variant text-sm font-semibold px-4 py-2 rounded-xl border border-outline-variant/30">
                   {rowCount} rows
                 </span>
               )}
@@ -117,21 +117,21 @@ export default function AdminDatabasePage() {
           )}
 
           {results && results.length > 0 && (
-            <div className="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+            <div className="bg-white rounded-2xl border border-outline-variant/30 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="bg-surface-container-low">
                       {columns.map((col) => (
-                        <th key={col} className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4 font-mono whitespace-nowrap">
+                        <th key={col} className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4 font-mono whitespace-nowrap">
                           {col}
                         </th>
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-outline-variant/20">
+                  <tbody>
                     {results.map((row, i) => (
-                      <tr key={i} className="hover:bg-surface-container-low transition-colors">
+                      <tr key={i} className="hover:bg-surface-container-low/50 transition-colors border-b border-outline-variant/10">
                         {columns.map((col) => (
                           <td key={col} className="px-6 py-3 text-xs font-mono text-on-surface-variant whitespace-nowrap max-w-[200px] truncate">
                             {row[col] === null ? <span className="text-outline italic">NULL</span> : String(row[col])}
@@ -146,7 +146,7 @@ export default function AdminDatabasePage() {
           )}
 
           {results && results.length === 0 && (
-            <div className="bg-surface-container-lowest rounded-xl shadow-sm p-8 text-center text-on-surface-variant">
+            <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 text-center text-on-surface-variant">
               Query returned no results
             </div>
           )}

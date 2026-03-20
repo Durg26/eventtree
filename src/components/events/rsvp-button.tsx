@@ -68,13 +68,13 @@ export function RsvpButton({
 
   const goingClass =
     status === "going"
-      ? "bg-primary text-on-primary px-6 py-3 rounded-full font-bold shadow-lg hover:bg-primary-dim transition-colors"
-      : "bg-surface-container-high text-on-surface px-6 py-3 rounded-full font-bold hover:bg-surface-container-highest transition-colors";
+      ? "bg-primary text-white px-6 py-3 rounded-xl font-semibold shadow-sm hover:bg-primary-dim transition-all duration-300"
+      : "bg-surface-container-low border border-outline-variant/30 text-on-surface px-6 py-3 rounded-xl font-semibold hover:border-primary/30 transition-all duration-300";
 
   const interestedClass =
     status === "interested"
-      ? "bg-tertiary text-on-tertiary px-6 py-3 rounded-full font-bold shadow-lg hover:bg-tertiary-dim transition-colors"
-      : "bg-surface-container-high text-on-surface px-6 py-3 rounded-full font-bold hover:bg-surface-container-highest transition-colors";
+      ? "bg-primary text-white px-6 py-3 rounded-xl font-semibold shadow-sm hover:bg-primary-dim transition-all duration-300"
+      : "bg-surface-container-low border border-outline-variant/30 text-on-surface px-6 py-3 rounded-xl font-semibold hover:border-primary/30 transition-all duration-300";
 
   return (
     <div className="space-y-3">

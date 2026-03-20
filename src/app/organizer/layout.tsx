@@ -18,8 +18,8 @@ export default function OrganizerLayout({ children }: { children: React.ReactNod
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar */}
         <aside className="w-full md:w-64 shrink-0">
-          <nav className="bg-surface-container-low rounded-xl p-4 space-y-1">
-            <p className="text-xs font-bold tracking-[0.05em] uppercase text-outline mb-4 px-4">
+          <nav className="bg-white rounded-2xl border border-outline-variant/30 p-4 space-y-1">
+            <p className="text-xs font-bold tracking-[0.05em] uppercase text-on-surface-variant mb-4 px-4">
               Organizer
             </p>
             {navItems.map((item) => {
@@ -28,10 +28,10 @@ export default function OrganizerLayout({ children }: { children: React.ReactNod
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-3 transition-colors rounded-xl px-4 py-3 text-sm ${
+                  className={`flex items-center gap-3 transition-colors ${
                     isActive
-                      ? "bg-primary-container text-on-primary-container font-semibold"
-                      : "text-secondary hover:bg-surface-container-high"
+                      ? "bg-primary text-white rounded-xl px-4 py-2.5 font-semibold"
+                      : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-xl px-4 py-2.5"
                   }`}
                 >
                   <item.icon className="h-4 w-4" />

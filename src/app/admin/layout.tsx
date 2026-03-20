@@ -24,7 +24,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="pt-24 pb-12 max-w-7xl mx-auto w-full px-6">
       <div className="flex gap-8">
         <aside className="w-64 shrink-0 hidden md:block">
-          <div className="bg-surface-container-low rounded-xl p-4 sticky top-28">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-4 sticky top-28">
             <h2
               className="text-lg font-extrabold text-on-background mb-1 px-4"
               style={{ fontFamily: "var(--font-headline)" }}
@@ -39,8 +39,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   href={link.href}
                   className={
                     isActive(link.href)
-                      ? "flex items-center gap-3 bg-primary-container text-on-primary-container font-semibold rounded-xl px-4 py-3 transition-colors"
-                      : "flex items-center gap-3 text-on-surface-variant hover:bg-surface-container rounded-xl px-4 py-3 transition-colors"
+                      ? "flex items-center gap-3 bg-primary text-white rounded-xl px-4 py-2.5 font-semibold transition-colors"
+                      : "flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-xl px-4 py-2.5 transition-colors"
                   }
                 >
                   <link.icon className="h-5 w-5" />

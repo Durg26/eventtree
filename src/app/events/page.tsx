@@ -103,7 +103,7 @@ function EventsPage() {
               placeholder="Search events..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-surface-container-high rounded-full pl-12 pr-4 py-3 text-on-surface placeholder:text-on-surface-variant outline-none focus:ring-2 focus:ring-primary transition-shadow"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl pl-12 pr-4 py-3 text-on-surface placeholder:text-on-surface-variant outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all duration-300"
             />
           </div>
         </form>
@@ -115,8 +115,8 @@ function EventsPage() {
               onClick={() => setCategory(cat.value)}
               className={
                 category === cat.value
-                  ? "bg-primary text-on-primary rounded-full font-bold text-sm px-6 py-2.5 shadow-md transition-colors"
-                  : "bg-tertiary-container text-on-tertiary-container rounded-full font-medium text-sm px-6 py-2.5 hover:opacity-90 transition-colors"
+                  ? "bg-primary text-white rounded-full font-semibold text-sm px-6 py-2.5 transition-all duration-300"
+                  : "bg-surface-container-low border border-outline-variant/30 text-on-surface-variant rounded-full font-medium text-sm px-6 py-2.5 hover:border-primary/30 transition-all duration-300"
               }
             >
               {cat.label}

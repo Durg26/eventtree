@@ -58,11 +58,11 @@ export default function AdminOverview() {
 
   const statCards = [
     { label: "Total Users", value: stats.totalUsers, icon: Users, iconBg: "bg-primary/10 text-primary" },
-    { label: "Total Events", value: stats.totalEvents, icon: CalendarDays, iconBg: "bg-tertiary/10 text-tertiary" },
-    { label: "Total Societies", value: stats.totalSocieties, icon: Building2, iconBg: "bg-secondary/10 text-secondary" },
+    { label: "Total Events", value: stats.totalEvents, icon: CalendarDays, iconBg: "bg-violet-100 text-violet-600" },
+    { label: "Total Societies", value: stats.totalSocieties, icon: Building2, iconBg: "bg-blue-100 text-blue-600" },
     { label: "Total RSVPs", value: stats.totalRsvps, icon: Ticket, iconBg: "bg-primary/10 text-primary" },
-    { label: "Events This Week", value: stats.eventsThisWeek, icon: TrendingUp, iconBg: "bg-tertiary/10 text-tertiary" },
-    { label: "New Users This Week", value: stats.newUsersThisWeek, icon: UserPlus, iconBg: "bg-secondary/10 text-secondary" },
+    { label: "Events This Week", value: stats.eventsThisWeek, icon: TrendingUp, iconBg: "bg-violet-100 text-violet-600" },
+    { label: "New Users This Week", value: stats.newUsersThisWeek, icon: UserPlus, iconBg: "bg-blue-100 text-blue-600" },
   ];
 
   return (
@@ -76,7 +76,7 @@ export default function AdminOverview() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         {statCards.map((stat) => (
-          <div key={stat.label} className="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+          <div key={stat.label} className="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm shadow-black/5">
             <div className="flex items-center gap-4">
               <div className={`p-3 rounded-xl ${stat.iconBg}`}>
                 <stat.icon className="h-5 w-5" />
@@ -90,7 +90,7 @@ export default function AdminOverview() {
         ))}
       </div>
 
-      <div className="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+      <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm shadow-black/5">
         <h2
           className="text-lg font-bold text-on-surface mb-4"
           style={{ fontFamily: "var(--font-headline)" }}

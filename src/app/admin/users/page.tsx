@@ -137,7 +137,7 @@ export default function AdminUsersPage() {
         </h1>
         <button
           onClick={() => setCreateOpen(true)}
-          className="bg-primary text-on-primary rounded-full font-bold px-6 py-2 flex items-center gap-2 hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20"
+          className="bg-primary text-white rounded-xl font-semibold px-6 py-2.5 flex items-center gap-2 hover:bg-primary-dim transition-colors"
         >
           <Plus className="h-4 w-4" /> Add User
         </button>
@@ -146,37 +146,37 @@ export default function AdminUsersPage() {
       {/* Create Dialog */}
       {createOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="bg-surface-container-lowest rounded-xl p-6 w-full max-w-md mx-4 shadow-2xl">
+          <div className="bg-white rounded-2xl shadow-2xl border border-outline-variant/20 p-6 w-full max-w-md mx-4">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold text-on-surface" style={{ fontFamily: "var(--font-headline)" }}>
                 Create User
               </h2>
-              <button onClick={() => setCreateOpen(false)} className="text-on-surface-variant hover:text-on-surface">
+              <button onClick={() => setCreateOpen(false)} className="text-on-surface-variant hover:text-on-surface transition-colors">
                 <X className="h-5 w-5" />
               </button>
             </div>
             <form onSubmit={handleCreate} className="space-y-4">
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">Name</label>
-                <input name="name" required className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none" />
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">Name</label>
+                <input name="name" required className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">Email</label>
-                <input name="email" type="email" required className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none" />
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">Email</label>
+                <input name="email" type="email" required className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">Password</label>
-                <input name="password" type="password" required minLength={6} className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none" />
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">Password</label>
+                <input name="password" type="password" required minLength={6} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">Role</label>
-                <select name="role" defaultValue="student" className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none">
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">Role</label>
+                <select name="role" defaultValue="student" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors">
                   <option value="student">Student</option>
                   <option value="organizer">Organizer</option>
                   <option value="admin">Admin</option>
                 </select>
               </div>
-              <button type="submit" disabled={saving} className="w-full bg-primary text-on-primary py-3 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform disabled:opacity-50">
+              <button type="submit" disabled={saving} className="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary-dim transition-colors disabled:opacity-50">
                 {saving ? "Creating..." : "Create User"}
               </button>
             </form>
@@ -187,37 +187,37 @@ export default function AdminUsersPage() {
       {/* Edit Dialog */}
       {editUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="bg-surface-container-lowest rounded-xl p-6 w-full max-w-md mx-4 shadow-2xl">
+          <div className="bg-white rounded-2xl shadow-2xl border border-outline-variant/20 p-6 w-full max-w-md mx-4">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold text-on-surface" style={{ fontFamily: "var(--font-headline)" }}>
                 Edit User
               </h2>
-              <button onClick={() => setEditUser(null)} className="text-on-surface-variant hover:text-on-surface">
+              <button onClick={() => setEditUser(null)} className="text-on-surface-variant hover:text-on-surface transition-colors">
                 <X className="h-5 w-5" />
               </button>
             </div>
             <form onSubmit={handleUpdate} className="space-y-4">
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">Name</label>
-                <input name="name" defaultValue={editUser.name} required className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none" />
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">Name</label>
+                <input name="name" defaultValue={editUser.name} required className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">Email</label>
-                <input name="email" type="email" defaultValue={editUser.email} required className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none" />
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">Email</label>
+                <input name="email" type="email" defaultValue={editUser.email} required className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">New Password (leave blank to keep)</label>
-                <input name="password" type="password" className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none" />
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">New Password (leave blank to keep)</label>
+                <input name="password" type="password" className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-bold text-on-surface-variant mb-2 block">Role</label>
-                <select name="role" defaultValue={editUser.role} className="w-full bg-surface-container-high border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 outline-none">
+                <label className="text-sm font-medium text-on-surface-variant mb-2 block">Role</label>
+                <select name="role" defaultValue={editUser.role} className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-colors">
                   <option value="student">Student</option>
                   <option value="organizer">Organizer</option>
                   <option value="admin">Admin</option>
                 </select>
               </div>
-              <button type="submit" disabled={saving} className="w-full bg-primary text-on-primary py-3 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform disabled:opacity-50">
+              <button type="submit" disabled={saving} className="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary-dim transition-colors disabled:opacity-50">
                 {saving ? "Saving..." : "Save Changes"}
               </button>
             </form>
@@ -225,24 +225,24 @@ export default function AdminUsersPage() {
         </div>
       )}
 
-      <div className="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white rounded-2xl border border-outline-variant/30 overflow-hidden">
         <table className="w-full">
           <thead>
             <tr className="bg-surface-container-low">
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Name</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Email</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Role</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Joined</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4 w-[100px]">Actions</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Name</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Email</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Role</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Joined</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4 w-[100px]">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-outline-variant/20">
+          <tbody>
             {users.map((u) => (
-              <tr key={u.id} className="hover:bg-surface-container-low transition-colors">
+              <tr key={u.id} className="hover:bg-surface-container-low/50 transition-colors border-b border-outline-variant/10">
                 <td className="px-6 py-4 text-sm font-semibold text-on-surface">{u.name}</td>
                 <td className="px-6 py-4 text-sm text-on-surface-variant">{u.email}</td>
                 <td className="px-6 py-4">
-                  <span className="text-xs font-bold uppercase tracking-wide bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full capitalize">
+                  <span className="text-xs font-medium uppercase tracking-wide bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full capitalize">
                     {u.role}
                   </span>
                 </td>

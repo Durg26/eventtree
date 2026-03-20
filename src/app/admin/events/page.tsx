@@ -72,38 +72,38 @@ export default function AdminEventsPage() {
         >
           Manage Events
         </h1>
-        <span className="bg-surface-container-low text-on-surface-variant text-sm font-bold px-4 py-2 rounded-full">
+        <span className="bg-white text-on-surface-variant text-sm font-semibold px-4 py-2 rounded-xl border border-outline-variant/30">
           {events.length} total
         </span>
       </div>
 
-      <div className="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white rounded-2xl border border-outline-variant/30 overflow-hidden">
         <table className="w-full">
           <thead>
             <tr className="bg-surface-container-low">
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Title</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Society</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Date</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Category</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Status</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">Views</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4">RSVPs</th>
-              <th className="text-left text-xs font-bold uppercase tracking-wider text-outline px-6 py-4 w-[100px]">Actions</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Title</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Society</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Date</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Category</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Status</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">Views</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4">RSVPs</th>
+              <th className="text-left text-xs font-medium uppercase tracking-wider text-on-surface-variant px-6 py-4 w-[100px]">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-outline-variant/20">
+          <tbody>
             {events.map((event) => (
-              <tr key={event.id} className="hover:bg-surface-container-low transition-colors">
+              <tr key={event.id} className="hover:bg-surface-container-low/50 transition-colors border-b border-outline-variant/10">
                 <td className="px-6 py-4 text-sm font-semibold text-on-surface">{event.title}</td>
                 <td className="px-6 py-4 text-sm text-on-surface-variant">{event.societyName || "-"}</td>
                 <td className="px-6 py-4 text-sm text-on-surface-variant">{new Date(event.date).toLocaleDateString()}</td>
                 <td className="px-6 py-4">
-                  <span className="text-xs font-bold uppercase tracking-wide bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full capitalize">
+                  <span className="text-xs font-medium uppercase tracking-wide bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full capitalize">
                     {event.category}
                   </span>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`text-xs font-bold px-3 py-1 rounded-full ${event.isPublished ? "bg-tertiary/10 text-tertiary" : "bg-surface-container-low text-on-surface-variant"}`}>
+                  <span className={`text-xs font-semibold px-3 py-1 rounded-full ${event.isPublished ? "bg-primary/10 text-primary" : "bg-surface-container-low text-on-surface-variant"}`}>
                     {event.isPublished ? "Published" : "Draft"}
                   </span>
                 </td>

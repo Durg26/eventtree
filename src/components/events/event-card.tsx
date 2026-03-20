@@ -25,10 +25,10 @@ const categoryColors: Record<string, string> = {
 export function EventCard({ id, title, date, location, category, societyName, imageUrl, rsvpCount }: EventCardProps) {
   return (
     <Link href={`/events/${id}`}>
-      <div className="bg-white rounded-2xl overflow-hidden border border-outline-variant/30 hover:shadow-xl hover:border-primary/20 transition-all duration-300 group">
+      <div className="bg-white rounded-2xl overflow-hidden border border-outline-variant/30 card-hover hover:border-primary/20 group">
         <div className="h-48 relative overflow-hidden">
           {imageUrl ? (
-            <img src={imageUrl} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src={imageUrl} alt={title} className="w-full h-full object-cover img-zoom" />
           ) : (
             <div className="w-full h-full gradient-mesh-hero flex items-center justify-center">
               <Calendar className="h-10 w-10 text-primary/25" />

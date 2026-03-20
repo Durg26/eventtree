@@ -65,7 +65,7 @@ function LoginForm() {
               type="email"
               placeholder="you@dal.ca"
               required
-              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-all text-sm"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-colors duration-200 text-sm"
             />
           </div>
 
@@ -78,7 +78,7 @@ function LoginForm() {
               name="password"
               type="password"
               required
-              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm transition-all"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm transition-colors duration-200"
             />
           </div>
 

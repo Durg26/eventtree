@@ -150,8 +150,8 @@ export default function CommunityPage() {
       {/* Hero Section */}
       <section className="gradient-mesh relative overflow-hidden rounded-2xl p-8 md:p-12 mb-10">
         {/* Abstract blur circles */}
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-violet-300/10 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl blur-orb" />
+        <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-violet-300/10 rounded-full blur-3xl blur-orb" />
 
         <div className="relative z-10">
           <span className="inline-block px-4 py-1 rounded-full bg-primary text-white text-xs font-bold tracking-widest uppercase mb-4">
@@ -170,7 +170,7 @@ export default function CommunityPage() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/community/collab-fridays"
-              className="px-8 py-3 bg-violet-100 text-primary rounded-xl font-semibold hover:bg-violet-200 transition-all duration-300 inline-flex items-center gap-2"
+              className="px-8 py-3 bg-violet-100 text-primary rounded-xl font-semibold hover:bg-violet-200 transition-colors duration-200 inline-flex items-center gap-2"
             >
               <Sparkles className="h-4 w-4" /> Collab Fridays
             </Link>
@@ -189,7 +189,7 @@ export default function CommunityPage() {
             <ArrowLeft className="h-4 w-4" /> Back to posts
           </button>
 
-          <div className="bg-white p-6 md:p-8 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+          <div className="bg-white p-6 md:p-8 rounded-2xl border border-outline-variant/30 card-hover">
             <div className="flex items-center gap-3 mb-4">
               {selectedPost.isPinned && (
                 <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold">
@@ -277,8 +277,8 @@ export default function CommunityPage() {
                   onClick={() => setActiveFilter(filter)}
                   className={
                     activeFilter === filter
-                      ? "px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold transition-all duration-300"
-                      : "px-4 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-bold hover:bg-surface-container transition-all duration-300"
+                      ? "px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold transition-colors duration-200"
+                      : "px-4 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-sm font-bold hover:bg-surface-container transition-colors duration-200"
                   }
                 >
                   {filter}
@@ -288,7 +288,7 @@ export default function CommunityPage() {
 
             {/* Quick Post Box */}
             {session && (
-              <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+              <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 card-hover">
                 <input
                   placeholder="Post title..."
                   value={quickPostTitle}
@@ -325,7 +325,7 @@ export default function CommunityPage() {
                   <div
                     key={post.id}
                     onClick={() => viewPost(post.id)}
-                    className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg hover:border-primary/20 transition-all duration-300 cursor-pointer"
+                    className="bg-white p-6 rounded-2xl border border-outline-variant/30 card-hover hover:border-primary/20 cursor-pointer"
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -386,7 +386,7 @@ export default function CommunityPage() {
           {/* Sidebar */}
           <div className="lg:col-span-4 space-y-6">
             {/* Collab Fridays Card */}
-            <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+            <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 card-hover">
               <div className="border-l-4 border-primary pl-4 mb-4">
                 <h3
                   className="font-extrabold text-on-surface flex items-center gap-2"
@@ -447,7 +447,7 @@ export default function CommunityPage() {
             </div>
 
             {/* Guidelines */}
-            <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+            <div className="bg-white p-6 rounded-2xl border border-outline-variant/30 card-hover">
               <h3
                 className="font-extrabold text-on-surface mb-3"
                 style={{ fontFamily: "var(--font-headline)" }}

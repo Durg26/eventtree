@@ -126,9 +126,9 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
       {/* Back Navigation */}
       <Link
         href="/events"
-        className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-all duration-300 mb-8 group"
+        className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors duration-200 mb-8 group"
       >
-        <span className="w-10 h-10 rounded-full bg-surface-container-low border border-outline-variant/30 flex items-center justify-center group-hover:border-primary/20 transition-all duration-300">
+        <span className="w-10 h-10 rounded-full bg-surface-container-low border border-outline-variant/30 flex items-center justify-center group-hover:border-primary/20 transition-colors duration-200">
           <ArrowLeft className="h-4 w-4" />
         </span>
         <span className="text-sm font-semibold tracking-wide">Back to events</span>
@@ -221,7 +221,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
         {/* Sidebar */}
         <div className="lg:col-span-4 space-y-8">
           {/* RSVP Card */}
-          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 card-hover hover:border-primary/20">
             <h3
               className="text-2xl font-bold text-on-surface mb-2"
               style={{ fontFamily: 'var(--font-headline)' }}
@@ -240,7 +240,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
           </div>
 
           {/* Event Details Card */}
-          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 card-hover hover:border-primary/20">
             <h3
               className="text-2xl font-bold text-on-surface mb-2"
               style={{ fontFamily: 'var(--font-headline)' }}
@@ -292,7 +292,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
           </div>
 
           {/* Society Card */}
-          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+          <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 card-hover hover:border-primary/20">
             <h3
               className="text-2xl font-bold text-on-surface mb-2"
               style={{ fontFamily: 'var(--font-headline)' }}
@@ -308,7 +308,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ ev
                   </span>
                 </div>
                 <div>
-                  <p className="font-bold text-on-surface group-hover:text-primary transition-all duration-300" style={{ fontFamily: 'var(--font-headline)' }}>
+                  <p className="font-bold text-on-surface group-hover:text-primary transition-colors duration-200" style={{ fontFamily: 'var(--font-headline)' }}>
                     {event.societyName}
                   </p>
                   {event.societyDescription && (

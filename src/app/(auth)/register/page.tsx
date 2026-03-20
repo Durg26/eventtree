@@ -83,7 +83,7 @@ export default function RegisterPage() {
               name="name"
               placeholder="Your name"
               required
-              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-all text-sm"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-colors duration-200 text-sm"
             />
           </div>
 
@@ -97,7 +97,7 @@ export default function RegisterPage() {
               type="email"
               placeholder="you@dal.ca"
               required
-              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-all text-sm"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none placeholder:text-on-surface-variant/40 transition-colors duration-200 text-sm"
             />
           </div>
 
@@ -111,7 +111,7 @@ export default function RegisterPage() {
               type="password"
               minLength={6}
               required
-              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm transition-all"
+              className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none text-sm transition-colors duration-200"
             />
           </div>
 
@@ -121,7 +121,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setRole("student")}
-                className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+                className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-colors duration-200 ${
                   role === "student"
                     ? "bg-primary text-white shadow-sm"
                     : "bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/30"
@@ -132,7 +132,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setRole("organizer")}
-                className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+                className={`flex-1 py-2.5 rounded-xl font-semibold text-sm transition-colors duration-200 ${
                   role === "organizer"
                     ? "bg-primary text-white shadow-sm"
                     : "bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:border-primary/30"

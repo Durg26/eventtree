@@ -103,7 +103,7 @@ export default async function OrganizerDashboard() {
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 hover:shadow-lg transition-all duration-300">
+        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 card-hover">
           <div className="flex items-center justify-between mb-3">
             <div className="p-3 bg-primary/10 text-primary rounded-lg">
               <CalendarDays className="h-5 w-5" />
@@ -121,7 +121,7 @@ export default async function OrganizerDashboard() {
           <p className="text-on-surface-variant text-sm mt-1">Total Events</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 hover:shadow-lg transition-all duration-300">
+        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 card-hover">
           <div className="flex items-center justify-between mb-3">
             <div className="p-3 bg-primary/10 text-primary rounded-lg">
               <Users className="h-5 w-5" />
@@ -139,7 +139,7 @@ export default async function OrganizerDashboard() {
           <p className="text-on-surface-variant text-sm mt-1">Total RSVPs</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 hover:shadow-lg transition-all duration-300">
+        <div className="bg-white rounded-2xl border border-outline-variant/30 p-6 card-hover">
           <div className="flex items-center justify-between mb-3">
             <div className="p-3 bg-primary/10 text-primary rounded-lg">
               <Eye className="h-5 w-5" />
@@ -197,7 +197,7 @@ export default async function OrganizerDashboard() {
           {myEvents.map((event) => (
             <div
               key={event.id}
-              className="bg-white rounded-2xl border border-outline-variant/30 p-4 flex flex-col lg:flex-row gap-6 items-center hover:shadow-lg transition-all duration-300"
+              className="bg-white rounded-2xl border border-outline-variant/30 p-4 flex flex-col lg:flex-row gap-6 items-center card-hover"
             >
               {/* Thumbnail placeholder */}
               <div className="w-full lg:w-48 h-32 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center shrink-0">

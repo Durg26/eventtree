@@ -83,7 +83,7 @@ export default async function SocietyProfilePage({
       {/* Back link */}
       <Link
         href="/events"
-        className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface font-medium mb-8 transition-all duration-300"
+        className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface font-medium mb-8 transition-colors duration-200"
       >
         <ArrowLeft className="h-4 w-4" /> Back to Events
       </Link>
@@ -102,7 +102,7 @@ export default async function SocietyProfilePage({
       )}
 
       {/* Society info section */}
-      <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 mb-10 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+      <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 mb-10 card-hover hover:border-primary/20">
         <div className="flex items-start gap-5">
           <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-2xl shrink-0">
             {society.logoUrl ? (
@@ -147,7 +147,7 @@ export default async function SocietyProfilePage({
       </div>
 
       {/* Events */}
-      <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
+      <div className="bg-white rounded-2xl border border-outline-variant/30 p-8 card-hover hover:border-primary/20">
         <h2
           className="text-2xl font-extrabold text-on-surface mb-6"
           style={{ fontFamily: "var(--font-headline)" }}

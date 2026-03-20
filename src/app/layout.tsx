@@ -9,12 +9,16 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-headline",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  preload: true,
 });
 
 const beVietnam = Be_Vietnam_Pro({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -30,6 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${plusJakarta.variable} ${beVietnam.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-surface text-on-background">

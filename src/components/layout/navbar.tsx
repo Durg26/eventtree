@@ -30,7 +30,7 @@ export function Navbar() {
   }
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-2xl border-b border-outline-variant/10 transition-all">
+    <header className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-2xl border-b border-outline-variant/10 gpu-layer">
       <div className="flex justify-between items-center px-6 py-3 max-w-7xl mx-auto">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-on-surface tracking-tight" style={{ fontFamily: 'var(--font-headline)' }}>
@@ -43,7 +43,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                 isActive(link.href)
                   ? "bg-primary text-on-primary shadow-sm"
                   : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"

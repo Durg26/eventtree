@@ -46,9 +46,9 @@ export default async function HomePage() {
       {/* Hero — Pastel gradient like evtree.info */}
       <section className="relative gradient-mesh pt-32 pb-24 px-6 overflow-hidden">
         {/* Floating blur circles for depth */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-violet-300/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-40 right-20 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-blue-200/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-violet-300/20 rounded-full blur-3xl pointer-events-none blur-orb" />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl pointer-events-none blur-orb" />
+        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-blue-200/15 rounded-full blur-3xl pointer-events-none blur-orb" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1
@@ -65,7 +65,7 @@ export default async function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <Link
               href="/events"
-              className="group bg-white rounded-2xl border border-outline-variant/30 p-8 text-left hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+              className="group bg-white rounded-2xl border border-outline-variant/30 p-8 text-left card-hover hover:border-primary/30"
             >
               <Calendar className="h-8 w-8 text-primary mb-4" />
               <h3 className="text-xl font-bold text-on-surface mb-2" style={{ fontFamily: 'var(--font-headline)' }}>
@@ -81,7 +81,7 @@ export default async function HomePage() {
 
             <Link
               href="/community"
-              className="group bg-white rounded-2xl border border-outline-variant/30 p-8 text-left hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+              className="group bg-white rounded-2xl border border-outline-variant/30 p-8 text-left card-hover hover:border-primary/30"
             >
               <Users className="h-8 w-8 text-primary mb-4" />
               <h3 className="text-xl font-bold text-on-surface mb-2" style={{ fontFamily: 'var(--font-headline)' }}>

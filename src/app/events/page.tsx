@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { EventCard } from "@/components/events/event-card";
 import { EmptyState } from "@/components/shared/empty-state";
@@ -48,9 +48,17 @@ function EventsPage() {
   const [events, setEvents] = useState<EventResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(searchParams.get("search") || "");
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
   const [category, setCategory] = useState(
     searchParams.get("category") || "all"
   );
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function handleSearchChange(value: string) {
+    setSearch(value);
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(() => setDebouncedSearch(value), 300);
+  }
 
   useEffect(() => {
     async function fetchEvents() {
@@ -58,7 +66,7 @@ function EventsPage() {
       try {
         const params = new URLSearchParams();
         if (category !== "all") params.set("category", category);
-        if (search) params.set("search", search);
+        if (debouncedSearch) params.set("search", debouncedSearch);
 
         const res = await fetch(`/api/events?${params}`);
         const data = await res.json();
@@ -69,7 +77,7 @@ function EventsPage() {
       setLoading(false);
     }
     fetchEvents();
-  }, [category, search]);
+  }, [category, debouncedSearch]);
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -78,6 +86,12 @@ function EventsPage() {
     if (search) params.set("search", search);
     router.push(`/events?${params}`);
   }
+
+  useEffect(() => {
+    return () => {
+      if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    };
+  }, []);
 
   return (
     <div className="pt-24 pb-20 px-6 max-w-7xl mx-auto">
@@ -102,7 +116,7 @@ function EventsPage() {
               type="text"
               placeholder="Search events..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl pl-12 pr-4 py-3 text-on-surface placeholder:text-on-surface-variant outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all duration-300"
             />
           </div>
@@ -126,12 +140,8 @@ function EventsPage() {
       </div>
 
       {/* Results */}
-      {loading ? (
-        <div className="flex justify-center py-16">
-          <Loader2 className="h-8 w-8 animate-spin text-on-surface-variant" />
-        </div>
-      ) : events.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {events.length > 0 ? (
+        <div className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 transition-opacity duration-200 ${loading ? "opacity-50" : "opacity-100"}`}>
           {events.map((event) => (
             <EventCard
               key={event.id}
@@ -145,6 +155,10 @@ function EventsPage() {
               rsvpCount={Number(event.rsvpCount)}
             />
           ))}
+        </div>
+      ) : loading ? (
+        <div className="flex justify-center py-16">
+          <Loader2 className="h-8 w-8 animate-spin text-on-surface-variant" />
         </div>
       ) : (
         <EmptyState

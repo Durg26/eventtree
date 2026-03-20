@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Loader2, Trash2, Eye } from "lucide-react";
+import { Loader2, Trash2, Eye, Plus } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
 
@@ -15,12 +15,6 @@ interface Event {
   societyName: string | null;
   rsvpCount: number;
 }
-
-const mockEvents: Event[] = [
-  { id: "1", title: "Spring Hackathon", date: "2026-04-10", category: "tech", isPublished: true, viewCount: 342, societyName: "CS Society", rsvpCount: 87 },
-  { id: "2", title: "Art Exhibition", date: "2026-04-15", category: "arts", isPublished: false, viewCount: 56, societyName: "Art Club", rsvpCount: 12 },
-  { id: "3", title: "Career Fair", date: "2026-04-20", category: "career", isPublished: true, viewCount: 890, societyName: null, rsvpCount: 234 },
-];
 
 export default function AdminEventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -36,7 +30,7 @@ export default function AdminEventsPage() {
       const data = await res.json();
       setEvents(data);
     } catch {
-      setEvents(mockEvents);
+      setEvents([]);
     } finally {
       setLoading(false);
     }
@@ -72,9 +66,18 @@ export default function AdminEventsPage() {
         >
           Manage Events
         </h1>
-        <span className="bg-white text-on-surface-variant text-sm font-semibold px-4 py-2 rounded-xl border border-outline-variant/30">
-          {events.length} total
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="bg-white text-on-surface-variant text-sm font-semibold px-4 py-2 rounded-xl border border-outline-variant/30">
+            {events.length} total
+          </span>
+          <Link
+            href="/admin/events/new"
+            className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl font-semibold text-sm hover:bg-primary-dim transition-colors"
+          >
+            <Plus className="h-4 w-4" />
+            Create Event
+          </Link>
+        </div>
       </div>
 
       <div className="bg-white rounded-2xl border border-outline-variant/30 overflow-hidden">

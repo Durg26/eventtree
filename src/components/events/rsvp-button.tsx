@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Check, Star } from "lucide-react";
 import { toast } from "sonner";
 
@@ -19,13 +19,14 @@ export function RsvpButton({
 }: RsvpButtonProps) {
   const { data: session } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
   const [status, setStatus] = useState(currentStatus);
   const [count, setCount] = useState(rsvpCount);
   const [loading, setLoading] = useState(false);
 
   async function handleRsvp(newStatus: "going" | "interested") {
     if (!session) {
-      router.push(`/login`);
+      router.push(`/login?callbackUrl=${encodeURIComponent(pathname)}`);
       return;
     }
 

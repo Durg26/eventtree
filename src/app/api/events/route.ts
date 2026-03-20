@@ -25,7 +25,6 @@ export async function GET(request: NextRequest) {
     .select({
       id: events.id,
       title: events.title,
-      description: events.description,
       location: events.location,
       date: events.date,
       category: events.category,
